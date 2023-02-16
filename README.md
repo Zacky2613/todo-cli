@@ -1,2 +1,8 @@
 # todo-cli
-A python cli todo list which can create, move, and delete todos.
+
+A python application tool to handle your tasks straight from the command line.
+
+## Fork
+
+This is inspired off of <a href="https://github.com/kennxdy/doddot">kennxdy's doddot project.</a>
+However, I have completely rewritten all the code and made it much nicer to read with clearer documentation and made it much more responsive.
