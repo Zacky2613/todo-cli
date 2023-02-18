@@ -10,7 +10,6 @@ elif (platform == "linux" or platform == "darwin"):
     clear_command = "clear"
 
 
-
 def display_todos(data: dict):
     os.system(clear_command)
 
@@ -18,11 +17,10 @@ def display_todos(data: dict):
     symbols = [" ", "~", "✓"]
     for symbol_id, title in enumerate(["TODO", "DOING", "DONE"]):  # Save code by putting this in a list.
         print(f"{title}:")
-        for item in data[title.lower()]:
+        for item_id, item in enumerate(data[title.lower()]):
             try:
-                print(f"    [{symbols[symbol_id]}] - {item['text']}")
+                print(f"    [{symbols[symbol_id]}] - {item['text']} #{item_id}")
             except:  # This is because of range() giving a IndexError.
                 pass
-                 
-        dict_num += 1  # Updating dict_num to move onto next item in the list.
 
+        dict_num += 1  # Updating dict_num to move onto next item in the list.
