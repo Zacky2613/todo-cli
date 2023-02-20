@@ -3,6 +3,8 @@
 import json
 
 
+
+
 # For handling user input and doing the right function for the command
 def json_save(data: dict):
     with open("data/data.json", "w") as f:
@@ -50,10 +52,15 @@ def move_task(data: dict):
     print("Structure: <item's category> <item id> <category to move too> (Example: todo 0 doing)")
     task_input = input("[*] Task: ")
     task_input = task_input.split(" ")
-    item_category, item_id, new_category = task_input[0].lower(), int(task_input[1]), task_input[2].lower()
 
-    data[new_category].append(data[item_category][item_id])
-    del data[item_category][item_id]
+    try:
+        item_category, item_id, new_category = task_input[0].lower(), int(task_input[1]), task_input[2].lower()
+
+        data[new_category].append(data[item_category][item_id])
+        del data[item_category][item_id]
+
+    except Exception as e:  # Choose an id that doens't exist
+        print(e)
 
     json_save(data=data)
 
