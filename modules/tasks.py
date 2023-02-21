@@ -3,28 +3,26 @@
 import json
 
 
-
-
-# For handling user input and doing the right function for the command
 def json_save(data: dict):
     with open("data/data.json", "w") as f:
         json.dump(data, f, indent=4)
 
 
+# For handling user input and doing the right function for the command
 def handle_commands(task_input: str, task_data: dict):
     if (task_input == "0"):
         exit()
 
-    elif (task_input == "1"):
+    elif (task_input == "1" or task_input.lower() == "add"):
         add_task(data=task_data)
 
-    elif (task_input == "2"):
+    elif (task_input== "2" or task_input.lower() == "move"):
         move_task(data=task_data)
 
-    elif (task_input == "3"):
+    elif (task_input== "3" or task_input.lower() == "clearcat"):
         clear_category(data=task_data)
 
-    elif (task_input == "4"):
+    elif (task_input == "4" or task_input.lower() == "clearall"):
         clear_all(data=task_data)
 
 
@@ -33,7 +31,13 @@ def add_task(data: dict):
     print("Structure: <category> <text> (Example: doing Update README.md)")
     task_input = input("[*] Task: ")
     task_input = task_input.split(" ", 1)
-    category, text = task_input[0], task_input[1]
+
+    try:
+        category, text = task_input[0], task_input[1]
+    except IndexError as e:
+        print(e)
+        return
+
 
     if (category.lower() == "todo"):
         data["todo"].append({"text": text, "category": category})
@@ -59,7 +63,7 @@ def move_task(data: dict):
         data[new_category].append(data[item_category][item_id])
         del data[item_category][item_id]
 
-    except Exception as e:  # Choose an id that doens't exist
+    except Exception as e:  # Error when choosen id that doens't exist
         print(e)
 
     json_save(data=data)
@@ -74,7 +78,10 @@ def clear_category(data: dict, manual_category=" "):
     print("Structure: <category>")
     category_input = input("[*] Category: ").lower()
 
-    data[category_input].clear()
+    try:
+        data[category_input].clear()
+    except KeyError as e:  # When the category choosen is unknown
+        print(e)
 
     json_save(data=data)
 
