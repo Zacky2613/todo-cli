@@ -7,8 +7,6 @@ with open("data/data.json", "r") as f:
 
 
 if __name__ == "__main__":
-    # We do it here because the other commands have this preloaded-
-    # -for showing exception errors in their function.
     while True:
         display_todos(data=task_data)
 
