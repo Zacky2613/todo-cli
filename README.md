@@ -2,34 +2,44 @@
 
 A python application tool to handle your tasks straight from the command line.
 
-## Usage
+## Features/Usage
 
 There are 3 categories which are todo, doing, and done. The following commands are how to interact with them
 
-### Add Task
+<details> 
+    <summary> Add Task </summary>
+    Add a task to one of the categories
 
-Add a task to one of the categories
+    Example: `[*] Task: todo update README.md file`
 
-Example: `[*] Task: todo update README.md file`
+</details>
 
-### Move Task
 
-Move a task from one category to another by task id (the 0)
+<details> 
+    <summary> Move Task </summary>
+    Move a task from one category to another by task id (the 0)
 
-Example: `[*] Task: todo 0 doing`
+    Example: `[*] Task: todo 0 doing`
 
-### Clear category
+</details>
 
-Clear a category in its entirety.
 
-Example: `[*] Category: todo`
+<details> 
+    <summary> Clear category </summary>
+    Clear a category in its entirety.
 
-### Clear all 
+    Example: `[*] Category: todo`
+</details> 
 
-Just the input and it clears all
+<details> 
+    <summary> Clear all </summary>
+    Just the input and it clears all
 
-## Fork
+</details>
+
+## Inspiration
 
 This is inspired off of <a href="https://github.com/kennxdy/doddot">kennxdy's doddot project.</a>
-However, I have completely rewritten all the code and made it much nicer to read with clearer documentation and made it much more responsive.
-<!--  -->
+
+How the categories and input selection are displayed is pretty close to kennxdy's. However, I've rewritten all the code and move the code structure around while having a completely different way of handling data in the backend.
+
